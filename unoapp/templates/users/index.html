@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+</head>
+<body>
+    
+    {% for message in message %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>Message:</strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    {% endfor %}    
+
+    
+    {% if user.is_authenticated %}
+        
+        <header>
+            <nav>
+                <button type="submit"><a href="/signout">SignOut</a></button>
+            </nav>
+            <h3>Hello {{ fname }}</h3>
+            <h4>You're succesfully logged in.</h4>
+        </header>
+
+        
+
+        <main>
+            <input list="Sintomas" placeholder= "Sintomas">
+            <datalist id="Sintomas">
+                <option value="Cervicalgia"></option>
+                <option value="Lumbalgia"></option>
+                <option value="Dorsalgia"></option>
+                <option value="Omalgia"></option>
+                <option value="gonalgia"></option>
+                <option value="cruralgia"></option>
+                <option value="pubalgia"></option>
+                <option value="Codo"></option>
+                <option value="mano"></option>
+                <option value="muñeca"></option>
+                <option value="tobillo"></option>
+            </datalist>
+
+            <input list="Estructura" placeholder= "Estructura">
+            <datalist id="Estructura">
+                <option value="ECOM"></option>
+                <option value="Trapecio"></option>
+                <option value="Escalenos"></option>
+                <option value="Suboccipitales"></option>
+                <option value="Elevador de la escápula"></option>
+            </datalist>
+
+            <input list="Tratamiento" placeholder= "Tratamiento">
+            <datalist id="Tratamiento">
+                <option value="ECOM"></option>
+                <option value="Trapecio"></option>
+                <option value="Escalenos"></option>
+                <option value="Suboccipitales"></option>
+                <option value="Elevador de la escápula"></option>   
+            </datalist> 
+            
+            <input type="submit">
+        
+        </main>
+
+        
+
+    {% else %}
+    <button type="submit"><a href="/signup">SignUp</a></button>
+    <button type="submit"><a href="/signin">SignIn</a></button>
+    {% endif %}
+</body>
+</html>
